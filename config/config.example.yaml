@@ -1,0 +1,28 @@
+search_terms:
+  - "online safety"
+
+direct_sources: []
+
+meta_sources:
+  - name: "Sky News - Internet Safety"
+    type: link_page
+    url: "https://news.sky.com/topic/internet-safety-6281/1"
+    enabled: true
+
+  - name: "Google News"
+    type: google_news
+    search_terms:
+      - "online safety"
+    enabled: true
+
+settings:
+  headless: true
+  page_timeout_ms: 30000
+  delay_between_requests_ms: 2000
+  max_listing_pages: 5
+  max_articles_per_source:
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+  storage:
+    mode: local
+    local_s3_path: data/s3
+    local_rds_path: data/rds

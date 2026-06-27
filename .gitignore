@@ -1,0 +1,45 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local config (copy from config.example.yaml)
+config/config.yaml
+
+# Scraped data and local storage (S3/RDS mimic)
+data/
+
+# Playwright browser profile (cookies, cache, session state)
+data/browser-profile/
+
+# Test and tooling caches
+.pytest_cache/
+.tox/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
