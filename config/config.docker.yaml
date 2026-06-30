@@ -1,0 +1,33 @@
+search_terms:
+  - "online safety"
+
+direct_sources:
+  - name: "Example Domain (pipeline smoke test)"
+    url: "https://example.com"
+    enabled: true
+
+meta_sources:
+  - name: "Sky News - Internet Safety"
+    type: link_page
+    url: "https://news.sky.com/topic/internet-safety-6281/1"
+    enabled: true
+
+  - name: "Google News"
+    type: google_news
+    search_terms:
+      - "online safety"
+    enabled: false
+
+settings:
+  headless: true
+  browser_channel:
+  use_persistent_profile: true
+  browser_profile_dir: data/browser-profile
+  page_timeout_ms: 30000
+  delay_between_requests_ms: 2000
+  max_listing_pages: 1
+  max_articles_per_source: 2
+  storage:
+    mode: local
+    local_s3_path: data/s3
+    local_rds_path: data/rds

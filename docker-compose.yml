@@ -1,0 +1,6 @@
+services:
+  scraper:
+    build: .
+    image: osa-ingestion:latest
+    volumes:
+      - ./data:/app/data

@@ -63,6 +63,36 @@ EventBridge schedule → EC2 (Playwright) → S3 (raw HTML) + RDS Postgres (meta
 
 Phase 1 uses local folders and CSV files for testing without AWS credentials.
 
+## Docker (local / EC2)
+
+Build and run with the bundled container config (`config/config.docker.yaml`):
+
+```powershell
+docker build -t osa-ingestion .
+docker run --rm -v "${PWD}/data:/app/data" osa-ingestion
+```
+
+Or with Docker Compose:
+
+```powershell
+docker compose up --build
+```
+
+Use your own config (create `config/config.yaml` from the example first):
+
+```powershell
+docker run --rm `
+  -v "${PWD}/data:/app/data" `
+  -v "${PWD}/config/config.yaml:/app/config/config.yaml:ro" `
+  osa-ingestion --config config/config.yaml
+```
+
+**EC2 notes:**
+- Install Docker on the instance, clone the repo, and run the same `docker build` / `docker run` commands.
+- Mount `./data` (or an EBS volume) so scraped HTML and CSV metadata persist between runs.
+- Containers use headless bundled Chromium (not system Chrome). Sky News story pages may still block automated browsers without CDP; plan for RSS or other sources on EC2 if needed.
+- For scheduled runs, use cron or EventBridge → `docker run ...` on the instance.
+
 ## Sky News bot protection
 
 Sky News uses Akamai, which blocks Playwright even when clicking links in Chrome. Cookies are not the issue.
